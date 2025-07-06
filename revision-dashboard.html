@@ -468,14 +468,14 @@
         .forEach(link => window.open(link.href, '_blank'));
     }
 
-    // Save scroll position before the page unloads
+    // Save scroll position before the page unloads (using localStorage)
     window.addEventListener('beforeunload', () => {
-      sessionStorage.setItem('scrollY', window.scrollY);
+      localStorage.setItem('scrollY', window.scrollY);
     });
 
-    // Restore scroll position when the page loads
+    // Restore scroll position when the page loads (using localStorage)
     window.addEventListener('load', () => {
-      const scrollY = sessionStorage.getItem('scrollY');
+      const scrollY = localStorage.getItem('scrollY');
       if (scrollY !== null) {
         window.scrollTo(0, parseInt(scrollY));
       }
